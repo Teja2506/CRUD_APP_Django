@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="container">
+        <h5 class="text-center">Upadte Student Details</h5>
+    <div class="container bg-body-secondary">
+<form action="/updatedStudent/{{std.id}}" method="post">
+  {% csrf_token %}
+    <div class="mb-3">
+      <label for="rollno" class="form-label">Roll NO</label>
+      <input type="text" class="form-control" id="rollno" name="rollno" value="{{std.Roll_no}}">
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="{{std.Name}}">
+    </div>
+    <div class="mb-3">
+      <label for="qualification" class="form-label">Qualification</label>
+      <input type="text" class="form-control" id="qualification" name="qualification" value="{{std.Qualification}}">
+    </div>
+    <div class="mb-3">
+      <label for="course" class="form-label">Course</label>
+      <input type="text" class="form-control" id="course" name="course" value="{{std.Course_joined}}">
+    </div>
+    <button type="submit" class="btn btn-primary offset-6 mt-2">Update</button>
+  </form>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <button type="button" class="btn btn-info offset-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Student</button>
+</div>
+<div class="container mt-5">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+              <th scope="col">Roll No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Qualification</th>
+              <th scope="col">Course Joined</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for stud in students %}
+            <tr>
+              <th scope="row">{{stud.Roll_no}}</th>
+              <td scope="row">{{stud.Name}}</td>
+              <td scope="row">{{stud.Qualification}}</td>
+              <td scope="row">{{stud.Course_joined}}</td>
+              <td scope="row"><a href="/updateStudent/{{stud.id}}" type="button" class="btn btn-warning offset-5">Update</a></td>
+              <td scope="row"><a href="/delStudent/{{stud.id}}" type="button" class="btn btn-danger">Delete</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Student</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="addStudent" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="rollno" class="form-label">Roll no</label>
+            <input type="text" class="form-control" id="rollno" aria-describedby="emailHelp" name="rollno">
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="qualification">Qualification</label>
+            <input type="text" class="form-control" id="qualification" name="qualification">
+          </div>
+          <div class="mb-3">
+            <label for="course">Course Joined</label>
+            <input type="text" class="form-control" id="course" name="course">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

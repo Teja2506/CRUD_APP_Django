@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="container bg-primary-subtle">
+<h1 class="text-center mt-5">Student Management System</h1><br><br>
+<div class="container bg-primary-subtle">
+<p class="mt-3"><strong>A Student Management System is also known as a Student Information System (SIS). These systems work to coordinate scheduling and communications between faculty regarding students. This system exists to simplify information tracking for both parents and administrative staff.  </strong></p><br><br><br>
+<h3>What are CRUD Operations: How CRUD Operations?</h3>
+<br><br>
+<h4>The Definition of CRUD</h4>
+<p>Within computer programming, the acronym CRUD stands for create, read, update, and delete. These are the four basic functions of persistent storage. Also, each letter in the acronym can refer to all functions executed in relational database applications and mapped to a standard HTTP method, SQL statement, or DDS operation.</p>
+<ul>
+    <li><strong><h5>CREATE</h5></strong> procedures: Performs the INSERT statement to create a new record in SQL databases.</li>
+    <li><strong><h5>READ</h5></strong>procedures: Reads the table records based on the primary keynoted within the input parameter.</li>
+    <li><strong><h5>UPDATE</h5></strong>procedures: Executes an UPDATE statement on the table based on the specified primary key for a record within the WHERE clause of the statement.</li>
+    <li><strong><h5>DELETE</h5></strong>procedures: Deletes a specified row in the WHERE clause.</li>
+</ul>
+
+<div class="text-center mt-2">
+    <p>
+    To go to Student Management System
+    {% if user.is_authenticated %}
+        <a class="text-center" href="{% url 'sms' %}">click here</a>
+    {% else %}
+      <a class="text-center" href="{% url 'login' %}">click here</a>
+    {% endif %}
+    </p>
+</div>
+</div>
+</div>
+
+{% endblock %}
